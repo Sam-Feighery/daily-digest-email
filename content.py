@@ -69,10 +69,22 @@ if __name__ == '__main__':
     # quote = get_quote()
     # print(f' - Random Quote is - \n"{quote}"')
 
-    print('\n - Testing wather forecast retrieval...')
+    print('\n - Testing weather forecast retrieval...')
 
     forecast = get_weather_forecast()
     if forecast:
-        print(f'\nWeather forecase for {forecast["city"]}, {forecast["country"]} is...')
+        print(f'\nWeather forecast for {forecast["city"]}, {forecast["country"]} is...')
         for period in forecast['period']:
             print(f' - {period["timestamp"]} | {period["temp"]}c | {period["description"]}')
+    
+    hither_green = {'lat': 51.4515872,'lon': -0.0006473} # coordinates for Texas State Capitol
+    forecast = get_weather_forecast(coords = hither_green) # get Austin, TX forecast
+    if forecast:
+        print(f'\nWeather forecast for {forecast["city"]}, {forecast["country"]} is...')
+        for period in forecast['period']:
+            print(f' - {period["timestamp"]} | {period["temp"]}°C | {period["description"]}')
+
+    invalid = {'lat': 1234.5678 ,'lon': 1234.5678} # invalid coordinates
+    forecast = get_weather_forecast(coords = invalid) # get forecast for invalid location
+    if forecast is None:
+        print('Weather forecast for invalid coordinates returned None')
