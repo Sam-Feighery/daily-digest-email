@@ -1,4 +1,4 @@
-# Set Location - London - This will be used to get the forcast and also be used to get roles within the specific location
+# Set Location - London - This will be used to get the forecast and also be used to get roles within the specific location
 # get quotes from a CSV file
 # get trends
 # get junior data engineering roles with a link
@@ -31,7 +31,7 @@ def get_quote():
 def get_location():
     pass
 
-def get_weather_forcast(coords={'lat': 51.5266694, 'lon': 0.0798926}): #Default coordincates for London
+def get_weather_forecast(coords={'lat': 51.5323935 , 'lon': -0.086078}): #Default coordincates for London
     '''
     Retrieve the current weather forecast from OpenWeatherMap.
     '''
@@ -71,8 +71,8 @@ if __name__ == '__main__':
 
     print('\n - Testing wather forecast retrieval...')
 
-    forecast = get_weather_forcast()
+    forecast = get_weather_forecast()
     if forecast:
-        print(f'\nWeather forcase for {forecast["city"]}, {forecast["country"]} is...')
+        print(f'\nWeather forecase for {forecast["city"]}, {forecast["country"]} is...')
         for period in forecast['period']:
             print(f' - {period["timestamp"]} | {period["temp"]}c | {period["description"]}')
